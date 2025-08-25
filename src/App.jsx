@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect  } from 'react';
+import React, { useState, useContext,useEffect,useRef   } from 'react';
 import {
   IonTabs,
   IonTabBar,
@@ -19,6 +19,7 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  IonApp
 } from '@ionic/react';
 import { IonMenuToggle } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -39,8 +40,9 @@ import WebHistorytable from './pages/webhistorytable';
 import Polish from './pages/polish';
 import { PolishProvider } from './context/PolishContext';
 import Polishtable from './pages/polishtable';
+import { App as CapacitorApp } from '@capacitor/app';
 
-function apps() {
+function App() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchState, setSearchState] = useState({});
 
@@ -61,10 +63,35 @@ function apps() {
     setIsAuthenticated(isAuthenticatedR());
   }, []);
 
+    const lastBackPress = useRef(0);
+
+  useEffect(() => {
+    let backListener;
+
+    const setupBackButtonListener = async () => {
+      backListener = await CapacitorApp.addListener('backButton', () => {
+        const now = Date.now();
+        if (now - lastBackPress.current < 2000) {
+          CapacitorApp.exitApp();
+        } else {
+          lastBackPress.current = now;
+          console.log('Press back again to exit');
+        }
+      });
+    };
+
+    setupBackButtonListener();
+
+    return () => {
+      if (backListener && typeof backListener.remove === 'function') {
+        backListener.remove(); // ✅ safely remove
+      }
+    };
+  }, []);
 
   return (
     <>
-
+ <IonApp>
       <IonReactRouter>
         <SearchProvider>
           <BasketProvider>
@@ -75,7 +102,7 @@ function apps() {
                     {isAuthenticated ? <Redirect to="/home" /> : <Redirect to="/login" />}
                   </Route>
                   <Route path="/register" component={Register} exact={true} />
-                  <Route path="/webhistory" render={() => <WebHistory></WebHistory>} exact={true} />
+                  {/* <Route path="/webhistory" render={() => <WebHistory></WebHistory>} exact={true} /> */}
                   <Route
                     path="/login"
                     render={() => (isAuthenticated ? <Redirect to="/home" /> : <Login setIsAuthenticated={setIsAuthenticated} />)}
@@ -89,7 +116,7 @@ function apps() {
                       <Route path="/login" render={() => <Login />} exact={true} />
                       <Route path="/register" render={() => <Register />} exact={true} />
                       <Route path="/changepass" render={() => <Changepass></Changepass>} exact={true} />
-                      <Route path="/webhistory" render={() => <Weborder></Weborder>} exact={true} />
+                      <Route path="/webhistory" render={() => <WebHistory></WebHistory>} exact={true} />
                       <Route path="/watchlist" render={() => <Watchlist></Watchlist>} exact={true} />
                       <Route path="/basket" render={() => <Basket></Basket>} exact={true} />
                       <Route path="/tableshow" render={() => <Tablesearch />} exact={true} />
@@ -112,8 +139,8 @@ function apps() {
 
 
         <IonMenu contentId="main-content">
-          <IonHeader>
-            <IonToolbar color="secondary">
+          <IonHeader style={{ paddingTop: 'var(--ion-safe-area-top, 0)' }}>
+            <IonToolbar color="#4c3226" style={{background:'#4c3226'}}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div>
                   <IonImg
@@ -222,8 +249,10 @@ function apps() {
           </IonContent >
         </IonMenu>
       )}
+
+</IonApp>
     </>
   );
 }
 
-export default apps; 
+export default App; 

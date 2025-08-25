@@ -42,6 +42,7 @@ import 'swiper/css/keyboard';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/zoom';
+import Bottom from './bottomtab';
 import { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper/modules';
 import Axios, { baseURL } from "../service/jwtAuth"
 // import { SearchContext } from "../context/SearchContext";
@@ -224,7 +225,7 @@ function Tablesearch() {
             const response = await Axios.post('/search/stoneUser?type=excel', payload);
 
             if (response.data.status === 'success') {
-                window.open(`${baseURL}exports/${response.data.fileName}`)
+                window.open(`${baseURL}/exports/${response.data.fileName}`)
                 setToastMessage(response?.data?.status);
                 setShowToast(true);
                 // setSelectedRows([]);
@@ -271,12 +272,12 @@ function Tablesearch() {
             setIsLoadings(true);
             const payload = {
                 stoneCert: "",
-                ...searchState // Pass the entire searchState object here
+                ...searchResult // Pass the entire searchState object here
             }
             const response = await Axios.post('/search/stoneUser?type=excel', payload);
 
             if (response.data.status === 'success') {
-                window.open(`${baseURL}exports/${response.data.fileName}`)
+                window.open(`${baseURL}/exports/${response.data.fileName}`)
                 setToastMessage(response?.data?.status);
                 setShowToast(true);
             }
@@ -300,8 +301,9 @@ function Tablesearch() {
 
     return (
         <>
+        <IonPage>
             <Header />
-            <IonContent color="primary" style={{ paddingBottom: '80x', marginBottom: '100px', marginTop: '10px', }}>
+            <IonContent  style={{ paddingBottom: '80x', marginBottom: '100px', marginTop: '10px', }}>
                 <div style={{ marginTop: '20px' }}>
                     <h5 class="text-center mb-5 element">Polish Certified Table</h5>
                 </div>
@@ -519,6 +521,8 @@ function Tablesearch() {
                     duration={2000}
                 />
             </IonContent >
+                       <Bottom />
+                       </IonPage>
         </ >
     );
 }

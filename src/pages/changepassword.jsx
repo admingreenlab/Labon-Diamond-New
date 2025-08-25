@@ -73,7 +73,7 @@
 //     return (
 //         <>
 //             <Header />
-//             <IonContent color="primary">
+//             <IonContent >
 //                 <div className="container mt-5 mb-5">
 //                     <h4 className="text-center mb-5 element" style={{ marginTop: '20px', fontWeight: '600' }}>Change User Password</h4>
 //                     <IonGrid style={{ marginBottom: "100px", color: "#4c3226", padding: '10px' }}>
@@ -165,6 +165,7 @@ import Header from './head';
 import '../pages/Tab1.css';
 import Axios, { baseURL } from "../service/jwtAuth";
 import { useHistory } from "react-router-dom";
+import Bottom from './bottomtab';
 
 function Product() {
   const [showToast, setShowToast] = useState(false);
@@ -236,8 +237,9 @@ function Product() {
 
   return (
     <>
+    <IonPage>
       <Header />
-      <IonContent color="primary" style={{ paddingBottom: '80x', marginBottom: '100px', marginTop: '10px' }}>
+      <IonContent  style={{ paddingBottom: '80x', marginBottom: '100px', marginTop: '10px' }}>
         <div style={{ marginTop: '20px' }}>
           <h5 class="text-center mb-5 element">Change user Password</h5>
         </div>
@@ -311,7 +313,8 @@ function Product() {
                         duration={2000}
                     />
       </IonContent >
-
+      <Bottom />
+      </IonPage>
     </ >
   );
 }

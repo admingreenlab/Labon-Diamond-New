@@ -13,7 +13,7 @@ const Axios = jwtAxios.create({
 
 // const Axios = jwtAxios.create({
 //   // baseURL: 'http://192.168.6.32:4747/',
-//   baseURL: 'https://labonstkback.labon.diamonds',
+//    ,
 //   headers: {
 //     "Content-Type": "application/json",
 //   },

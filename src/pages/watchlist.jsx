@@ -26,6 +26,7 @@ import {
     IonButtons,
     IonToast
 } from '@ionic/react';
+import Bottom from './bottomtab';
 import { IonCol, IonGrid, IonRow, IonTabButton } from '@ionic/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Header from './head';
@@ -304,8 +305,9 @@ function Watchlist() {
 
     return (
         <>
+        <IonPage>
             <Header />
-            <IonContent color="primary" style={{ paddingBottom: '80x', marginBottom: '100px', marginTop: '10px' }}>
+            <IonContent  style={{ paddingBottom: '80x', marginBottom: '100px', marginTop: '10px' }}>
                 <div style={{ marginTop: '20px' }}>
                     <h5 class="text-center mb-5 element">Watch List</h5>
                 </div>
@@ -548,6 +550,7 @@ function Watchlist() {
                                                     <th>Shape</th>
                                                     <th>MM Size</th>
                                                     <th>Width</th>
+                                                    <th>ASK AMT</th>
 
                                                     </tr>
                                                 </thead>
@@ -579,6 +582,7 @@ function Watchlist() {
                                                         <td>{item.FL_SHAPE_NAME}</td>
                                                         <td>{item.FL_SIZE}</td>
                                                         <td>{item.FL_WIDTH}</td>
+                                                        <td>{item.FL_ASK_AMT}</td>
                                                         </tr>
                                                     ))}
                                        
@@ -599,7 +603,8 @@ function Watchlist() {
                 />
 
             </IonContent >
-
+           <Bottom />
+           </IonPage>
         </ >
     );
 }

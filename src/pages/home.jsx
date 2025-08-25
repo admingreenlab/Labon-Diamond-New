@@ -14,6 +14,7 @@ import {
   IonToast
 } from "@ionic/react";
 import Header from './head';
+import Bottom from './bottomtab';
 import Axios, { baseURL } from "../service/jwtAuth";
 import { SearchContext } from "../context/SearchContext";
 import { useHistory, useLocation } from "react-router-dom";
@@ -339,7 +340,7 @@ const Home = () => {
           pathname: `/tableshow`,
           state: { searchResult: response.data.result, selectedOptions: selectedOptions }
         });
-        window.location.reload()
+        // window.location.reload()
       } else {
         setError(data.message);
         setToastMessage(err.response.data.message)
@@ -356,10 +357,12 @@ const Home = () => {
 
 
   return (
+    <>
     <IonPage>
-      <IonHeader>
         <Header />
-      </IonHeader>
+      {/* <IonHeader>
+        
+      </IonHeader> */}
       <IonContent>
         <IonGrid style={{ marginBottom: "20px" }}>
           <div style={{ marginTop: '20px' }}>
@@ -748,7 +751,7 @@ const Home = () => {
                             Available
                           </label>
                         </div>
-                        <div className=""  >
+                        {/* <div className=""  >
                           <label style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                             <input
                               type="checkbox"
@@ -773,7 +776,7 @@ const Home = () => {
                             />
                             Hold
                           </label>
-                        </div>
+                        </div> */}
                       </IonCol>
 
                     </IonRow>
@@ -832,7 +835,9 @@ const Home = () => {
           </div>
         )}
       </IonContent>
+      <Bottom />
     </IonPage>
+    </>
   );
 };
 

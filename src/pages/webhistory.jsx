@@ -35,6 +35,7 @@ import { text } from 'ionicons/icons';
 import moment from 'moment';
 import Axios, { baseURL } from "../service/jwtAuth";
 import { useHistory } from "react-router-dom";
+import Bottom from './bottomtab';
 
 
 function WebHistory() {
@@ -54,7 +55,7 @@ function WebHistory() {
     };
 
     useEffect(() => {
-        const user = localStorage.getItem('user') || localStorage.getItem('user');
+        const user = localStorage.getItem('user');
         if (user) {
             // console.log('user.FL_USER_NAME',JSON.parse(user)?.FL_USER_NAME)
             setClientName(JSON.parse(user)?.FL_USER_NAME)
@@ -106,7 +107,7 @@ function WebHistory() {
       
       function formatDate(dateString) {
         const dateParts = dateString.split('-');
-        return `${dateParts[1]}-${dateParts[2]}-${dateParts[0]}`;
+       return `${dateParts[1]}-${dateParts[2]}-${dateParts[0]}`;
       }
       
     
@@ -122,8 +123,9 @@ function WebHistory() {
 
     return (
         <>
+        <IonPage>
             <Header />
-            <IonContent color="primary" style={{ paddingBottom: '80x', marginBottom: '100px', marginTop: '10px' }}>
+            <IonContent  style={{ paddingBottom: '80x', marginBottom: '100px', marginTop: '10px' }}>
                 <div style={{ marginTop: '20px' }}>
                     <h5 class="text-center mb-5 element">Web History</h5>
                 </div>
@@ -218,7 +220,8 @@ function WebHistory() {
                     duration={2000}
                 />
             </IonContent >
-
+           <Bottom />
+           </IonPage>
         </ >
     );
 }

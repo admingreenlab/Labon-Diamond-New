@@ -11,6 +11,7 @@ import Header from './head';
 import { IonButtons, IonButton, IonModal, IonHeader, IonPage } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import Axios from "../service/jwtAuth";
+import Bottom from './bottomtab';
 
 const Weborder = () => {
     // const [formData, setFormData] = useState({
@@ -72,8 +73,9 @@ const Weborder = () => {
 
     return (
         <>
+        <IonPage>
             <Header />
-            <IonContent color="primary">
+            <IonContent >
                 <div className="container mt-5 mb-5">
                     <h4 className="text-center mb-5 element" style={{ marginTop: '20px', fontWeight: '600' }}>Web Order History</h4>
                     <IonGrid style={{ marginBottom: "100px", color: "#4c3226", padding: '10px' }}>
@@ -126,7 +128,8 @@ const Weborder = () => {
                     </IonGrid>
                 </div>
             </IonContent>
-
+           <Bottom />
+           </IonPage>
         </>
     )
 };

@@ -17,6 +17,7 @@ import Header from './head';
 import Axios, { baseURL } from "../service/jwtAuth";
 import { PolishContext } from "../context/PolishContext";
 import { useHistory, useLocation } from "react-router-dom";
+import Bottom from './bottomtab';
 
 const Polish = () => {
   const history = useHistory();
@@ -345,7 +346,7 @@ const Polish = () => {
           pathname: `/polishtableshow`,
           state: { searchResults: response.data.result, selectedOptionss: selectedOptionss }
         });
-        window.location.reload()
+        // window.location.reload()
       } else {
         setError(data.message);
         setToastMessage(err.response.data.message)
@@ -363,9 +364,9 @@ const Polish = () => {
 
   return (
     <IonPage>
-      <IonHeader>
+     
         <Header />
-      </IonHeader>
+ 
       <IonContent>
         <IonGrid style={{ marginBottom: "20px" }}>
           <div style={{ marginTop: '20px' }}>
@@ -875,6 +876,7 @@ const Polish = () => {
           </div>
         )}
       </IonContent>
+      <Bottom />
     </IonPage>
   );
 };

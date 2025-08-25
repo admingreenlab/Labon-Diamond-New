@@ -13,6 +13,7 @@ import {
   IonSearchbar
 } from '@ionic/react';
 import Header from './head';
+import Bottom from './bottomtab';
 
 const LibraryPage = () => (
   <>
@@ -33,6 +34,7 @@ const LibraryPage = () => (
         </IonCard>
       </div>
     </IonContent>
+    <Bottom />
   </>
 );
 

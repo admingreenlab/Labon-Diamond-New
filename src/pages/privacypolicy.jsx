@@ -19,6 +19,7 @@ import { IonCol, IonGrid, IonRow, IonTabButton } from '@ionic/react';
 import { IonTextarea } from '@ionic/react';
 import Header from './head';
 import { IonModal } from '@ionic/react';
+import Bottom from './bottomtab';
 
 const RadioPage = () => {
     const [counter, setCounter] = useState(0);
@@ -41,7 +42,7 @@ const RadioPage = () => {
             <Header />
 
 
-            <IonContent color="primary" style={{ paddingBottom: '80x', marginBottom: '100px' }}>
+            <IonContent  style={{ paddingBottom: '80x', marginBottom: '100px' }}>
                 <h4 className="text-center mb-5 element" style={{ marginTop: '20px' }}>Privacy policy</h4>
                 <IonGrid>
                     <IonRow>
@@ -240,6 +241,7 @@ const RadioPage = () => {
                     </IonRow>
                 </IonGrid>
             </IonContent >
+                       <Bottom />
         </>
     );
 };
