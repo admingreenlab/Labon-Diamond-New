@@ -1551,3 +1551,9 @@ input:focus-visible {
     }
 }
 
+span.checkbox-label img {
+    width: 46px;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 11px;
+}

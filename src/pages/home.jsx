@@ -375,6 +375,9 @@ const Home = () => {
             <a href='/polish'>
               <button type="button" class="sumbutton sumbutton-11">Polish Parcel</button>
             </a>
+            <a href='/jewel'>
+              <button type="button" class="sumbutton sumbutton-11">Jewelry</button>
+            </a>
           </div>
           <IonRow>
             <IonCol size="12">

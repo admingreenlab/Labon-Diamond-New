@@ -41,6 +41,7 @@ import Polish from './pages/polish';
 import { PolishProvider } from './context/PolishContext';
 import Polishtable from './pages/polishtable';
 import { App as CapacitorApp } from '@capacitor/app';
+import Jewel from './pages/jewel';
 
 function App() {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -121,6 +122,7 @@ function App() {
                       <Route path="/basket" render={() => <Basket></Basket>} exact={true} />
                       <Route path="/tableshow" render={() => <Tablesearch />} exact={true} />
                       <Route path="/polishtableshow" render={() => <Polishtable />} exact={true} />
+                      <Route path="/jewel" render={() => <Jewel />} exact={true} />
                     
                       <Route path="/webhistorytable" render={() => <WebHistorytable></WebHistorytable>} exact={true} />
                       <Route path="/polish" render={() => <Polish></Polish>} exact={true} />
