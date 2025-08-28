@@ -379,9 +379,9 @@ const Polish = () => {
             <a href='/polish'>
               <button type="button" class="sumbutton ">Polish Parcel</button>
             </a>
-              <a href='/jewel'>
+              {/* <a href='/jewel'>
               <button type="button" class="sumbutton sumbutton-11 ">Jewelry</button>
-            </a>
+            </a> */}
           </div>
           <IonRow>
             <IonCol size="12">
